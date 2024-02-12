@@ -3,10 +3,10 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | InvoicePro Dashboard",
-    default: "InvoicePro Dashboard",
+    template: "%s | InvoicePro Alsos Dashboard",
+    default: "InvoicePro Alsos Dashboard",
   },
-  description: "InvoicePro dashboard.",
+  description: "InvoicePro Alsos dashboard.",
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {
