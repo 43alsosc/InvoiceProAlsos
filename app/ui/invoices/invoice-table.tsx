@@ -44,7 +44,10 @@ const InvoicesTable = () => {
       <div className="inline-block min-w-full align-middle"></div>
        {/* Container for the invoice table, with different layouts for mobile and desktop views */}
        <div className="rounded-lg bg-gray-50 p-2 md:pt-0">
+       {/**/}
+       {/**/}
        {/* Mobile view: list of invoices */}
+       {/**/}
        {/**/}
        <div className="md:hidden">
          {invoices?.map((invoice) => (
@@ -93,7 +96,11 @@ const InvoicesTable = () => {
            </div>
          ))}
        </div>
+       {/**/}
+       {/**/}
        {/* Desktop view: table layout */}
+       {/**/}
+       {/**/}
        <table className="hidden min-w-full text-gray-900 md:table">
          <thead className="rounded-lg text-left text-sm font-normal">
            {/* Table headers */}
@@ -119,7 +126,11 @@ const InvoicesTable = () => {
            </tr>
          </thead>
          <tbody className="bg-white">
+          {/**/}
+           {/**/}
            {/* Table rows */}
+           {/**/}
+           {/**/}
         {invoices.map((invoice) => (
           <>
           <tr key={invoice.id}>
