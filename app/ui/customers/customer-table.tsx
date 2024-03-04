@@ -67,6 +67,19 @@ const CustomerTable = () => {
                   {/* Customer email */}
                   <p className="text-sm text-gray-500">{customer.email}</p>
                 </div>
+                {/* Total invoices, pending and paid */}
+                <div className="flex flex-col">
+                  <p className="text-xs text-gray-700">Total invoices</p>
+                  <p className="text-sm">{customer.totalInvoices}</p>
+                </div>
+                <div className="flex flex-col">
+                  <p className="text-xs text-gray-700">Total pending</p>
+                  <p className="text-sm">{customer.totalPending}</p>
+                </div>
+                <div className="flex flex-col">
+                  <p className="text-xs text-gray-700">Total paid</p>
+                  <p className="text-sm">{customer.totalPaid}</p>
+                </div>
               </div>
               <div className="flex w-full items-center justify-between pt-4">
                 {/* Action buttons for update and delete operations */}
@@ -83,7 +96,7 @@ const CustomerTable = () => {
           <thead className="rounded-lg text-left text-sm font-normal">
             {/* Table headers */}
             <tr>
-            <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
+              <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
                 Id
               </th>
               <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
@@ -91,6 +104,15 @@ const CustomerTable = () => {
               </th>
               <th scope="col" className="px-3 py-5 font-medium">
                 Email
+              </th>
+              <th scope="col" className="px-3 py-5 font-medium">
+                Total invoices
+              </th>
+              <th scope="col" className="px-3 py-5 font-medium">
+                Total pending
+              </th>
+              <th scope="col" className="px-3 py-5 font-medium">
+                Total paid
               </th>
               <th scope="col" className="relative py-3 pl-6 pr-3">
                 <span className="sr-only">Edit</span>
@@ -111,10 +133,21 @@ const CustomerTable = () => {
                     width={28}
                     height={28}
                   />
-                    <div><p>{customer.customerName}</p></div>
+                  <div>
+                    <p>{customer.customerName}</p>
+                  </div>
                 </td>
                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm ">
                   {customer.email}
+                </td>
+                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm ">
+                  {customer.totalInvoices}
+                </td>
+                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm ">
+                  {customer.totalPending}
+                </td>
+                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm ">
+                  {customer.totalPaid}
                 </td>
                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm ">
                   <UpdateCustomer id={customer.id} />
@@ -123,9 +156,11 @@ const CustomerTable = () => {
             ))}
           </tbody>
         </table>
+
       </div>
     </div>
   );
 };
 
 export default CustomerTable;
+
