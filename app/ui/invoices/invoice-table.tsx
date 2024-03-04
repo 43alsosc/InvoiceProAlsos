@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
 import React, { useEffect, useState } from "react";
 import { UpdateInvoice } from "./buttons";
 import InvoiceStatus from "./status";
 import Image from "next/image";
-import { formatCurrency, formatDateToLocal } from "@/lib/utils";
+import { formatCurrency, formatDateToLocal } from "@/app/lib/utils";
 
 interface Invoice {
   id: string;
