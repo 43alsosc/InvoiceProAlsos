@@ -1,10 +1,30 @@
-# Node.js MySQL Database Connection
+# NextJs MySQL Database Connection
 
-Dette er et prosjekt for hovedsaklig for å lære NextJS og React.
+## Prosjektoversikt
 
-Dette er en faktura nettside hvor du kan se og legge til kunder og fakturaer.
-Kundene så kan du se Navn, Profilbilde, Epost, hvor mange fakturaer de har hatt og hvor mange de har akkurat nå.
-Fakturaene så kan du se faktura id'en, navn, epost, når den ble laget og når den har frist, hvor mye fakturaen er på og hvilken status fakturaen har(Avventer, betalt, forfalt).
+Dette prosjektet er hovedsakelig dedikert til å utforske NextJS og React. Formålet er å styrke min kompetanse innenfor disse rammeverkene.
+
+## Funksjonaliteter
+
+Prosjektet er en nettbasert faktureringsplattform som tilbyr følgende funksjonaliteter:
+
+- **Kundeadministrasjon:**
+  - Visning og modifikasjon av kundedetaljer inkludert navn, profilbilde, epost, antall tidligere fakturaer og gjeldende antall fakturaer.
+
+- **Fakturahåndtering:**
+  - Visning og modifikasjon av fakturadetaljer inkludert faktura-ID, navn, epost, opprettelsesdato, forfallsdato, beløp og fakturastatus (avventende, betalt, forfalt).
+
+## Teknologier
+
+Prosjektet er bygget ved hjelp av følgende teknologier:
+
+- **Frontend:**
+  - React
+  - NextJS
+
+- **Backend:**
+  - MySQL2
+
 
 <br><br><br><br><br><br><br>
 
