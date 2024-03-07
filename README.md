@@ -1,36 +1,216 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Node.js MySQL Database Connection
 
-## Getting Started
+Dette er et prosjekt for hovedsaklig for å lære NextJS og React.
 
-First, run the development server:
+Dette er en faktura nettside hvor du kan se og legge til kunder og fakturaer.
+Kundene så kan du se Navn, Profilbilde, Epost, hvor mange fakturaer de har hatt og hvor mange de har akkurat nå.
+Fakturaene så kan du se faktura id'en, navn, epost, når den ble laget og når den har frist, hvor mye fakturaen er på og hvilken status fakturaen har(Avventer, betalt, forfalt).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+<br><br><br><br><br><br><br>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Brukertesting
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# Testdeltaker 1:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+**Prosjektnavn:** Alsos Invoice Pro  
+**Dato for testing:** 07-03-2024
 
-## Learn More
+**Testdeltakerens navn:** Fredrik Alsos 
+**Alder:** 17  
+**Yrkesbakgrunn:** Sy Elev  
+**Tidligere erfaring med lignende systemer:** Har ingen tidligere erfaring med lignende systemer.
 
-To learn more about Next.js, take a look at the following resources:
+#### Oppgave 1: Finne fram til faktura/invoices siden:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Observasjoner:** 
+- Fredrik navigerte til og gjennom skjemaet i moderat hastighet.
+- Ingen felt virket forvirrende eller vanskelige for Fredrik.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+#### Oppgave 2: Se på oversikten over registrerte fakturaer:
 
-## Deploy on Vercel
+**Observasjoner:**
+- Fredrik reagerte positivt på tabellen og syntes informasjonen var lett å forstå.
+- Han fikk en god oversikt over registrerte fakturaer uten problemer.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+#### Oppgave 3: Lag en faktura
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+**Ovservasjoner**
+- Fredrik skjønte utfylling fint og gjennomførte med moderatt hastighet
+- Han syntes alt så fint og profesjonelt ut
+- Fredrik likte hvor oversiktelig det var å legge til en faktura
+
+#### Oppgave 4: Finne fram til kunder/customers siden:
+
+**Observasjoner:** 
+- Fredrik navigerte til og gjennom skjemaet i moderat hastighet.
+- Ingen felt virket forvirrende eller vanskelige for Fredrik.
+
+#### Oppgave 5: Se på oversikten over registrerte kunder:
+
+**Observasjoner:**
+- Fredrik reagerte positivt på tabellen og syntes informasjonen var lett å forstå.
+- Han fikk en god oversikt over registrerte kunder uten problemer.
+
+#### Oppgave 6: Lag en kunde
+
+**Ovservasjoner**
+- Fredrik skjønte utfylling fint og gjennomførte med høy hastighet
+- Han syntes alt så fint og profesjonelt ut
+- Fredrik likte hvor oversiktelig det var å legge til en kunde
+
+#### Tilbakemeldinger:
+
+- Hva likte Fredrik best med systemet? Fredrik likte den enkle navigasjonen og de tydelige oversiktenene og knappene for å finne fram og lage kunder og fakturaer.
+- Hva var mest utfordrende eller forvirrende? Fredrik fant ingen utfordringer eller forvirrende elementer.
+- Eventuelle forslag til forbedringer: Home siden var tom, vil gjerne at denne skal fylles ut.
+
+#### Generelle spørsmål:
+
+- Hvordan vil du beskrive din generelle opplevelse med systemet? Fredrik beskriver opplevelsen som svært positiv og intuitiv.
+- På en skala fra 1 til 10, hvor enkelt var det å bruke systemet? Fredrik gir en score på 8.
+- Vil du ha noen endringer eller tillegg til funksjonaliteten? Fredrik ønsker at hjem/home-siden skal bli utviklet.
+
+#### Avslutning:
+
+- Er det noe annet du ønsker å legge til eller kommentere? Fredrik har ingen ytterligere kommentarer.
+
+#### Takk for deltakelsen!
+
+# Testdeltaker 2:
+
+**Prosjektnavn:** Alsos Invoice Pro  
+**Dato for testing:** 07-03-2024
+
+**Testdeltakerens navn:** Fredrik Inpitak
+**Alder:** 17
+**Yrkesbakgrunn:** IT-elev  
+**Tidligere erfaring med lignende systemer:** Har ingen erfaring med lignende systemer.
+
+#### Oppgave 1: Finne fram til faktura/invoices siden:
+
+**Observasjoner:** 
+- Fredrik navigerte til og gjennom skjemaet i høy hastighet.
+- Ingen felt virket forvirrende eller vanskelige for Fredrik.
+
+#### Oppgave 2: Se på oversikten over registrerte fakturaer:
+
+**Observasjoner:**
+- Fredrik reagerte positivt på tabellen og syntes informasjonen var lett å forstå.
+- Han fikk en god oversikt over registrerte fakturaer uten problemer.
+
+#### Oppgave 3: Lag en faktura
+
+**Ovservasjoner**
+- Fredrik skjønte utfylling fint og gjennomførte med høy hastighet
+- Han syntes alt så fint og profesjonelt ut
+- Fredrik likte hvor oversiktelig det var å legge til en faktura
+
+#### Oppgave 4: Finne fram til kunder/customers siden:
+
+**Observasjoner:** 
+- Fredrik navigerte til og gjennom skjemaet i høy hastighet.
+- Ingen felt virket forvirrende eller vanskelige for Fredrik.
+
+#### Oppgave 5: Se på oversikten over registrerte kunder:
+
+**Observasjoner:**
+- Fredrik reagerte positivt på tabellen og syntes informasjonen var lett å forstå.
+- Han fikk en god oversikt over registrerte kunder uten problemer.
+
+#### Oppgave 6: Lag en kunde
+
+**Ovservasjoner**
+- Fredrik skjønte utfylling fint og gjennomførte med høy hastighet
+- Han syntes alt så fint og profesjonelt ut
+- Fredrik likte hvor oversiktelig det var å legge til en kunde
+
+#### Tilbakemeldinger:
+
+- Hva likte Carl Oscar best med systemet? Fredrik likte den klare strukturen, men ønsket mulighetenr for å endre og slette kunder og fakturaer.
+- Hva var mest utfordrende eller forvirrende? Ingenting var forvirrende for Fredrik.
+- Eventuelle forslag til forbedringer: Fredrik foreslår muligheter for å slette og endre kunder og fakturaer.
+
+#### Generelle spørsmål:
+
+- Hvordan vil du beskrive din generelle opplevelse med systemet? Fredrik beskriver opplevelsen som positiv, men med noen forbedringspunkter.
+- På en skala fra 1 til 10, hvor enkelt var det å bruke systemet? Fredrik gir en score på 7.
+- Vil du ha noen endringer eller tillegg til funksjonaliteten? Fredrik ønsker å endre/slette kunder og fakturaer.
+
+#### Avslutning:
+
+- Er det noe annet du ønsker å legge til eller kommentere? Nei, Fredrik har ikke noe mer å kommentere.
+
+#### Takk for deltakelsen!
+
+# Testdeltaker 3:
+
+**Prosjektnavn:** Alsos Invoice Pro  
+**Dato for testing:** 07-03-2024
+
+**Testdeltakerens navn:** Jarl Mathias Ellefsen
+**Alder:** 17  
+**Yrkesbakgrunn:** IT-Elev
+**Tidligere erfaring med lignende systemer:** Ingen tidligere erfaring med lignende systemer.
+
+#### Oppgave 1: Finne fram til faktura/invoices siden:
+
+**Observasjoner:** 
+- Fredrik navigerte til og gjennom skjemaet i høy hastighet.
+- Ingen felt virket forvirrende eller vanskelige for Jarl Mathias.
+
+#### Oppgave 2: Se på oversikten over registrerte fakturaer:
+
+**Observasjoner:**
+- Jarl Mathias reagerte positivt på tabellen og syntes informasjonen var lett å forstå.
+- Han fikk en god oversikt over registrerte fakturaer uten problemer.
+
+#### Oppgave 3: Lag en faktura
+
+**Ovservasjoner**
+- Jarl Mathias skjønte utfylling fint og gjennomførte med høy hastighet
+- Han syntes alt så fint og profesjonelt ut
+- Jarl Mathias likte hvor oversiktelig det var å legge til en faktura
+
+#### Oppgave 4: Finne fram til kunder/customers siden:
+
+**Observasjoner:** 
+- Jarl Mathias navigerte til og gjennom skjemaet i høy hastighet.
+- Ingen felt virket forvirrende eller vanskelige for Jarl Mathias.
+
+#### Oppgave 5: Se på oversikten over registrerte kunder:
+
+**Observasjoner:**
+- Jarl Mathias reagerte positivt på tabellen og syntes informasjonen var lett å forstå.
+- Han fikk en god oversikt over registrerte kunder uten problemer.
+
+#### Oppgave 6: Lag en kunde
+
+**Ovservasjoner**
+- Jarl Mathias skjønte utfylling fint og gjennomførte med høy hastighet
+- Han syntes alt så fint og profesjonelt ut
+- Jarl Mathias likte hvor oversiktelig det var å legge til en kunde
+
+#### Tilbakemeldinger:
+
+- Hva likte Jarl Mathias best med systemet? Jarl Mathias likte oversikten, men ønsket bedre design og muligheter for å slette/endre kunder og fakturaer.
+- Hva var mest utfordrende eller forvirrende? Ingenting var forrvirrende for Jarl Mathias
+- Eventuelle forslag til forbedringer: Jarl Mathias foreslår endring av "Create ..." knappene for å se enda bedre ot, og legge til sletting og redigering av kunder og fakturaer.
+
+#### Generelle spørsmål:
+
+- Hvordan vil du beskrive din generelle opplevelse med systemet? Jarl Mathias beskriver opplevelsen som lite utfordrende.
+- På en skala fra 1 til 10, hvor enkelt var det å bruke systemet? Jarl Mathias gir en score på 6.
+- Vil du ha noen endringer eller tillegg til funksjonaliteten? Jarl Mathias ønsker en hjem-side med innhold.
+
+#### Avslutning:
+
+- Nei
+
+#### Takk for deltakelsen!
+
+# Framtidige Brukertesting endringer
+- Gjør "Create ..." knappene bedre med plassering og farger.
+- Få endre fakturaer og kunder
+- Få slette fakturaer og kunder
+- Få fikset en home side som viser mer om hva nettsiden er og hva selskapet står for.
+-
