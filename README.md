@@ -25,6 +25,8 @@ Prosjektet er bygget ved hjelp av følgende teknologier:
 - **Backend:**
   - MySQL2
 
+## Guide og liknende
+https://alsos.notion.site/Alsos-Invoices-a26f7b526285423ea864a51e2fb9ba6a?pvs=4 
 
 <br><br><br><br><br><br><br>
 
