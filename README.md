@@ -28,6 +28,9 @@ Prosjektet er bygget ved hjelp av følgende teknologier:
 ## Guide og liknende
 https://alsos.notion.site/Alsos-Invoices-a26f7b526285423ea864a51e2fb9ba6a?pvs=4 
 
+###### Nettadressen for å komme på nettsiden, må være på skole nettverket
+http://172.20.128.41
+
 <br><br><br><br><br><br><br>
 
 ## Brukertesting
