@@ -5,6 +5,7 @@ import { UpdateInvoice } from "./buttons";
 import InvoiceStatus from "./status";
 import Image from "next/image";
 import { formatCurrency, formatDateToLocal } from "@/app/lib/utils";
+import Link from "next/link";
 
 interface Invoice {
   id: string;
@@ -41,6 +42,9 @@ const InvoicesTable = () => {
 
   return (
     <div className="mt-6 flow-root">
+      <Link href="/dashboard/invoices/create">
+        Create Invoice!
+      </Link>
       <div className="inline-block min-w-full align-middle"></div>
        {/* Container for the invoice table, with different layouts for mobile and desktop views */}
        <div className="rounded-lg bg-gray-50 p-2 md:pt-0">
@@ -104,25 +108,28 @@ const InvoicesTable = () => {
        <table className="hidden min-w-full text-gray-900 md:table">
          <thead className="rounded-lg text-left text-sm font-normal">
            {/* Table headers */}
-           <tr>
-             <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
+           <tr> 
+           <th scope="col" className="px-3 py-5 font-medium text-center">
+               Id
+             </th>
+             <th scope="col" className="px-4 py-5 font-medium sm:pl-6 text-center">
                Customer
              </th>
-             <th scope="col" className="px-3 py-5 font-medium">
-               Email
-             </th>
-             <th scope="col" className="px-3 py-5 font-medium">
+             <th scope="col" className="px-3 py-5 font-medium text-center">
                Amount
              </th>
-             <th scope="col" className="px-3 py-5 font-medium">
+             <th scope="col" className="px-3 py-5 font-medium text-center">
                Date
              </th>
-             <th scope="col" className="px-3 py-5 font-medium">
+             <th scope="col" className="px-3 py-5 font-medium text-center">
+               Due Date
+             </th>
+             <th scope="col" className="px-3 py-5 font-medium text-center">
                Status
              </th>
-             <th scope="col" className="relative py-3 pl-6 pr-3">
+             {/* <th scope="col" className="relative py-3 pl-6 pr-3">
                <span className="sr-only">Edit</span>
-             </th>
+             </th> */}
            </tr>
          </thead>
          <tbody className="bg-white">
@@ -151,27 +158,31 @@ const InvoicesTable = () => {
             </td>
             <td className={`px-5 py-5 border-b border-gray-200 bg-white text-sm`}>
             <InvoiceStatus status={invoice.status} />
-
-          </td>
-          <td className="whitespace-nowrap py-3 pl-6 pr-3">
-              <div className="flex justify-end gap-3">
-                <UpdateInvoice id={invoice.id}></UpdateInvoice>
-              </div>
             </td>
-            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-              {/* <button
+            {/* UpdateInvoice Knapp */}
+
+            {/* <td className="whitespace-nowrap py-3 pl-6 pr-3">
+                <div className="flex justify-end gap-3">
+                  <UpdateInvoice id={invoice.id}></UpdateInvoice>
+                </div>
+              </td> */}
+
+              {/* DeleteInvoice Knapp */}
+
+            {/* <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+               <button
                 type="button"
                 className="text-blue-600 hover:text-blue-900"
                 onClick={() => deleteInvoice(invoice.id)}
               >
                 Delete
-              </button> */}
-            </td>
-            </tr>
-          </>
-        ))}
-      </tbody>
-    </table>
+              </button>
+              </td> */}
+              </tr>
+            </>
+          ))}
+        </tbody>
+      </table>
     </div>
     </div>
   );
