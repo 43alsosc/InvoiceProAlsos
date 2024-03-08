@@ -13,7 +13,6 @@ import { redirect } from 'next/navigation';
 
 // Defining a FormSchema using zod, specifying the shape of form fields
 const FormSchema = z.object({
-    id: z.string(),  // Defines id as a string
     customerId: z.string({  // Defines customerId as a string with custom error message
         invalid_type_error: 'Please select a customer.',
     }),
@@ -24,14 +23,14 @@ const FormSchema = z.object({
         invalid_type_error: 'Please select an invoice status.',
     }),
     date: z.string(),  // Defines date as a string
-    customerName: z.string(),  // Defines customerName as a string
-    email: z.string(),  // Defines email as a string
-    image_url: z.string(),  // Defines image_url as a string
+    customerName: z.string().optional(),  // Defines customerName as a string
+    email: z.string().optional(),  // Defines email as a string
+    image_url: z.string().optional(),  // Defines image_url as a string
 });
 
 // Creating CreateInvoice schema by omitting id and date fields from FormSchema
 const CreateInvoice = FormSchema.omit({ id: true, date: true });
-const CreateCustomer = FormSchema.omit({ id: true });
+// const CreateCustomer = FormSchema.omit({ id: true });
 
 // Creating UpdateInvoice schema by omitting id and date fields from FormSchema
 const UpdateInvoice = FormSchema.omit({ id: true, date: true });
@@ -39,7 +38,7 @@ const UpdateInvoice = FormSchema.omit({ id: true, date: true });
 // Defining State type, which includes optional errors and message properties
 export type State = {
     errors?: {
-        customerId?: string[];
+        id?: string[];
         amount?: string[];
         status?: string[];
         customerName?: string[];
@@ -51,15 +50,31 @@ export type State = {
 
 // Asynchronous function to create an invoice, takes previous state and form data as parameters
 export async function createInvoice(prevState: State, formData: FormData) {
+    console.log("DETTE ER I CREATEINVOICE")
+
+    const formObject = Object.fromEntries(formData.entries());
+    console.log(formObject)
+
+    // Before validating the formObject, add the date
+    formObject.date = new Date().toISOString();
+
+    // 
+    const validatedData = FormSchema.parse(formObject);
+    console.log(validatedData)
+
     // Parsing and validating form data against CreateInvoice schema
+    console.log("Formdata: ", formData);
     const validatedFields = CreateInvoice.safeParse({
         customerId: formData.get('customerId'),
         amount: formData.get('amount'),
         status: formData.get('status'),
     });
 
+    console.log("Validated Fields: ", validatedFields);  // Log validatedFields
+
     // Handling validation errors
     if (!validatedFields.success) {
+        console.log("missing fields")
         return {
             errors: validatedFields.error.flatten().fieldErrors,
             message: 'Missing Fields. Failed to Create Invoice.',
@@ -68,17 +83,27 @@ export async function createInvoice(prevState: State, formData: FormData) {
 
     // Destructuring validated data
     const { customerId, amount, status } = validatedFields.data;
-    const date = new Date().toISOString().split('T')[0];  // Formatting current date
 
     try {
+        // Fetching customer details from the database
+        const customers = await query(`SELECT customerName, image_url, email FROM customers WHERE id = ?`, [customerId]);
+        if (customers.length === 0) {
+            console.log("No customer found with ID:", customerId);
+            throw new Error(`No customer found with ID: ${customerId}`);
+        }
+
+        const { customerName, image_url, email } = customers[0];
+
         // Constructing SQL prepared statement for insertion
-        const preparedStatement = `INSERT INTO  invoices
-            (customer_id, amount, status, date) VALUES (?, ?, ?, ?)`;
-        const values = [customerId, amount, status, date];
+        const preparedStatement = `INSERT INTO invoices
+        (customerId, customerName, image_url, email, amount, dueBy, status) VALUES (?, ?, ?, ?, ?, DATE_ADD(NOW(), INTERVAL 14 DAY), ?)`;
+        const values = [customerId, customerName, image_url, email, amount, status];
+
         // Executing SQL query with prepared statement and values
         await query(preparedStatement, values);
     } catch (error) {
         // Handling database errors
+        console.error('Database Error:', error);
         return {
             message: 'Database Error: Failed to Create Invoice.',
         };
@@ -156,10 +181,16 @@ export async function fetchInvoiceById(id: string) {
 
 // Asynchronous function to fetch all customers
 export async function fetchCustomers() {
+    noStore();
     try {
         // Querying database to fetch all customer data
-        const data = await query(`SELECT customers.id, customer.customerName, customer.email FROM customers ORDER BY customerName ASC`);
-        const customers = data;  // Storing fetched customer data
+        const data = await query(`SELECT customers.id, customers.customerName, customers.email FROM customers ORDER BY customerName ASC`);
+        const customers = data.map((customer: { id: number; customerName: string; email: string; }) => ({
+            ...customer,
+            id: customer.id,
+            customerName: customer.customerName,
+            email: customer.email,
+        }));  // Storing fetched customer data
         return customers;  // Returning fetched customers
     } catch (err) {
         // Handling database errors
@@ -168,42 +199,42 @@ export async function fetchCustomers() {
     }
 }
 
-export async function createCustomer(prevState: State, formData: FormData) {
-    // Parsing and validating form data against CreateInvoice schema
-    const validatedFields = CreateCustomer.safeParse({
-        customerName: formData.get('customerName'),
-        image_url: formData.get('image_url'),
-        email: formData.get('email'),
-    });
+// export async function createCustomer(prevState: State, formData: FormData) {
+//     // Parsing and validating form data against CreateInvoice schema
+//     const validatedFields = CreateCustomer.safeParse({
+//         customerName: formData.get('customerName'),
+//         image_url: formData.get('image_url'),
+//         email: formData.get('email'),
+//     });
 
-    // Handling validation errors
-    if (!validatedFields.success) {
-        return {
-            errors: validatedFields.error.flatten().fieldErrors,
-            message: 'Missing Fields. Failed to Create Invoice.',
-        };
-    }
+//     // Handling validation errors
+//     if (!validatedFields.success) {
+//         return {
+//             errors: validatedFields.error.flatten().fieldErrors,
+//             message: 'Missing Fields. Failed to Create Invoice.',
+//         };
+//     }
 
-    // Destructuring validated data
-    const { customerName, image_url, email
-    } = validatedFields.data;
+//     // Destructuring validated data
+//     const { customerName, image_url, email
+//     } = validatedFields.data;
 
-    try {
-        // Constructing SQL prepared statement for insertion
-        const preparedStatement = `INSERT INTO  customers
-            (customerName, image_url, email) VALUES (?, ?, ?)`;
-        const values = [customerName, image_url, email];
-        // Executing SQL query with prepared statement and values
-        await query(preparedStatement, values);
-    } catch (error) {
-        // Handling database errors
-        return {
-            message: 'Database Error: Failed to Create Customer.',
-        };
-    }
+//     try {
+//         // Constructing SQL prepared statement for insertion
+//         const preparedStatement = `INSERT INTO  customers
+//             (customerName, image_url, email) VALUES (?, ?, ?)`;
+//         const values = [customerName, image_url, email];
+//         // Executing SQL query with prepared statement and values
+//         await query(preparedStatement, values);
+//     } catch (error) {
+//         // Handling database errors
+//         return {
+//             message: 'Database Error: Failed to Create Customer.',
+//         };
+//     }
 
-    // Revalidating path and redirecting
-    revalidatePath('/dashboard/customers');
-    redirect('/dashboard/customers');
-}
+//     // Revalidating path and redirecting
+//     revalidatePath('/dashboard/customers');
+//     redirect('/dashboard/customers');
+// }
 
